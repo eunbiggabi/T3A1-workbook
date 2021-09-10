@@ -58,7 +58,7 @@ Also, depending on the size/scope of the project, the team would also need to de
 
 A project that I worked on earlier in the course was a web application built with Ruby On Rails. Of course, the biggest aspect of this project was learning the Object Orientated language ‘Ruby’. Being my first programming language also it was hard to find resources compare to Javascript and Python
 
-Apart from Ruby, learning Rails was also quite an undertaking and a challenge. Having only ever worked with HTML and CSS, I really found the concepts of object-oriented programming difficult and making sense of how it all fit into the Rails Framework.
+Apart from Ruby, learning Rails was also quite an undertaking and a challenge. Having only ever worked with HTML and CSS, I really found the concepts of object-oriented programming and MVC difficult and making sense of how it all fit into the Rails Framework.
 
 I believe that It was a great experience to deal with backend databases such as Postgres, AWS, and ERD.
 
@@ -104,6 +104,182 @@ const implicit = 123 + ''
 console.log(implicit);
 ```
 
+## Question 9
+
+‘Data Types’ in JavaScript refer to the "type" of data being represented. There are several different types of data in JavaScript.
+
+‘Primitive’ data types include type ‘String’, ‘Number’, ‘Boolean’, ‘Null‘ and ‘Undefined’. These data types are referred to as ‘Primitive’ because their values can contain only a single type (i.e.: a ‘String’ OR a ‘Number’, but NOT both combined).
+
+The follow examples are 'primitive' types of data. Each individual data type can only be assigned to one variable:
+
+```
+const string = 'foo';
+const number = 42;
+const boolean = true;
+let y = null;
+let x = undefined;
+```
+
+A more complex data type in JavaScript would be an ‘Object’. Objects are used to store collections of data and more complex entities. An example of a more complex entity might be an Object containing other data structures like an Array and even an Object containing other Objects.
+
+The following example is an Object which contains 5 Key/Value pairs, one if which the value is another Object:
+
+```
+const kyu = {
+  name: 'kyu',
+  age: 37,
+  gender: 'male',
+  single: false,
+  spouse: {sammi}
+}
+```
+
+## Question 10
+
+An Array is a data structure in which data can be stored, accessed, manipulated/mutated and deleted. To accomplish this in JavaScript, the array needs to be iterated through while using the appropriate array method for the desired outcome.
+
+```
+let fruits = ['apple', 'banana', 'orange', 'pear', 'watermelon'];
+
+// Example 1 – Add data to the array (mutates the original array):
+fruits.push('Kiwi');
+console.log(fruits);
+
+// Example 2 – Delete data from the array (mutates the original array):
+fruits.pop();
+console.log(fruits);
+
+// Example 3 – Access data in the array and log to console:
+fruits.forEach(printArray = (fruit) => {
+  console.log(fruit);
+});
+
+// Example 4 – Creates a new array from the original array (does not mutate the original array):
+const newFruitsArrary = fruits.map(fruit => {
+  return fruit
+});
+console.log(newFruitsArrary);
+```
+
+## Question 11
+
+The below Object is referred to as an ‘Object Literal’. This example of a single Object is a data structure made up of key: value pairs. It has 3 properties – make, model, and year:
+
+```
+const myCar = {
+    make: 'Hyundai',
+    model: 'IX 30',
+    year: 2014
+};
+```
+To access the keys/values in this Object and log it to console using string interpolation, I would write the following code:
+
+```
+const make = myCar.make
+const model = myCar.model
+const year = myCar.year
+
+// other way
+
+const make = myCar['make']
+const model = myCar['model']
+const year = myCar['year']
+
+console.log(`I bought a ${make} ${model} in ${year}`);
+```
+
+To create more instances of an Object, a Constructor function is required. Using ES6 syntax, I would do this using the Class function to create more instances of the ‘Captains’ object:
+
+```
+class Cars {
+  constructor(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+}
+
+const kyu = new Cars('hyundai', 'IX 35', '2014');
+console.log(kyu);
+
+const sammi = new Cars('audi', 'A3', '2017');
+console.log(sammi);
+```
+
+## Question 12
+
+JSON (JavaScript Object Notation), is a format in which data can be stored in an organized, easy-to-access manner.
+
+The JSON.stringify() function converts a JavaScript Object into a JSON string. This is useful for when the data needs to be available via API to be accessible by other servers/clients.
+
+In the below example, the “JSON.stringify()” function is used on a JavaScript Object to convert it to a JSON string, then stored in a variable:
+
+```
+const employee = {
+  name: "kyu",
+  age: 37,
+  address: {
+    street: "15 fuster street",
+    city: "Brisbane"
+  },
+  interests: ["game", "exercise"]
+}
+const data = JSON.stringify(employee)
+console.log(data);
+```
+
+To access data provided in JSON format via an API - or a file that has been “required” into a document, the JSON.parse() function is used. In effect, this is the reverse process, in that a JSON String is now being converted into a JSON Object.
+
+In this example, the JSON String (stored in the variable 'data') is now being parsed back into an Object:
+
+```
+const newEmployee = JSON.parse(data);
+console.log(newEmployee);
+```
+
+Question 13
+
+```
+class Car {  // this is a class that will produce 'Car' objects
+  constructor(brand) {  // the constructor will initialize the new object
+    this.carname = brand;  // this assigns brand to this.carname
+  }
+  present() {  // this is a function named 'present'
+    return 'I have a ' + this.carname;  // the function returns a string concatinated with the carname/brand
+  }
+}
+
+class Model extends Car {  // this class inherits from the Car class
+  constructor(brand, mod) {  // the constructor will initialize a model with a brand and model
+    super(brand);  // this calls the car class
+    this.model = mod;  // this assigns mod to this.model
+  }
+  show() {  // this function will return this.present from Car and concationate it with this.model
+    return this.present() + ', it was made in ' + this.model;
+  }
+}
+
+let makes = ["Ford", "Holden", "Toyota"]  // this is an array containing 3 items
+let models = Array.from(new Array(40), (x,i) => i + 1980)  // this creates an array of numbers representing dates from 1980
+
+function randomIntFromInterval(min,max) { // min and max included
+    return Math.floor(Math.random()*(max-min+1)+min);  // this function returns a random integer between min and max
+}
+
+for (model of models) {
+
+  make = makes[randomIntFromInterval(0,makes.length-1)]  // selects a random integer between 0 and makes.length-1 and uses that as an index to select a random make
+  model = models[randomIntFromInterval(0,makes.length-1)]  // selects a random integer between 0 and makes.length-1 and uses that as an index to select a random model
+    
+  mycar = new Model(make, model);  // create a new Model object stored in the variable 'mycar'
+  console.log(mycar.show())  // logs to the console 'I have a Ford, it was made in 1981' (assuming that Ford and 1981 was randomly chosen)
+}
+
+```
+
+
+
+
 
 ### Reference
 
@@ -134,8 +310,25 @@ Developer.mozilla.org. 2021. Control flow - MDN Web Docs Glossary: Definitions o
 
 Developer.mozilla.org. 2021. Type coercion - MDN Web Docs Glossary: Definitions of Web-related terms | MDN. [online] Available at: <https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion> [Accessed 1 September 2021].
 
+#### Q9
 
+Developer.mozilla.org. 2021. JavaScript data types and data structures - JavaScript | MDN. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures> [Accessed 5 September 2021].
 
+#### Q10
+
+Developer.mozilla.org. 2021. Array - JavaScript | MDN. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array> [Accessed 10 September 2021].
+
+#### Q11
+
+Developer.mozilla.org. 2021. Working with objects - JavaScript | MDN. [online] Available at: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects> [Accessed 10 September 2021].
+
+#### Q12
+
+Developer.mozilla.org. 2021. Working with JSON - Learn web development | MDN. [online] Available at: <https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON> [Accessed 10 September 2021].
+
+#### Q13
+
+Cs.utah.edu. 2021. Programming - Commenting. [online] Available at: <https://www.cs.utah.edu/~germain/PPS/Topics/commenting.html> [Accessed 10 September 2021].
 
 
 
