@@ -1,6 +1,6 @@
 ## Question 1
 
-Source control (or version control) is the practice of tracking and managing changes to code. The codebase is usually stored in a SCM (Source Control Management) system which will help to track and manage code that is uploaded/pushed from multiple sources/developers. The SCM system will help to track code changes, historical changes/revision, different versions of the codebase at different points in the development process and enable collaboration between multiple developers – each with their own versions of the codebase which can later be merged together after detectable conflicts are resolved. Developers will typically work on their own forks and branches and commit their code for review by senior developers.
+Source control (or version control) refers to tracking and managing changes to code. This ensures that developers are always working on the right version of source code. The codebase is usually stored in a SCM (Source Control Management) system which will help to track and manage code that is uploaded/pushed from multiple sources/developers. The SCM system will help to track code changes, historical changes/revision, different versions of the codebase at different points in the development process and enable collaboration between multiple developers – each with their own versions of the codebase which can later be merged together after detectable conflicts are resolved. Developers will typically work on their own forks and branches and commit their code for review by senior developers.
 
 
 ## Question 2
@@ -75,21 +75,23 @@ Another improvement I have made is the addition of using more JavaScript in the 
 
 ## Question 7
 
-‘Control Flow’ is the order in which a computer executes statements in a script. A script in JavaScript may include several/many control structures such as conditionals, loops and functions.
+'Control flow' is the order in which the computer executes statements in a script. A script in JavaScript may include several/many control structures such as conditionals, loops and functions.
 
 The below If/Else Statement can change the flow of an application based on if a condition that is passed into the statement is determined to be true or false:
 
 ```
-if (isItTrue === true) {
-  return true
-} else {
-  return false
+function isEven (num) {
+    if (num % 2 === 0) {
+        return true;
+    } else {
+        return false;
+    }   
 }
 ```
 
 ## Question 8
 
-‘Type Coercion’ is the process of converting the value from one datatype into a different datatype. There are two different types of ‘Type Coercion’ – Implicit and Explicit.
+Type coercion is the process of converting value from one type to another (such as string to number, object to boolean, and so on). There are two different types of ‘Type Coercion’ – Explicit and Implicit.
 
 ‘Explicit’ Type Coercion is when type coercion is done on purpose by writing the appropriate code. The following example will coerce the number 123 into a string (using the JavaScript built-in String function):
 
@@ -97,27 +99,29 @@ if (isItTrue === true) {
 const explicit = String(123)
 console.log(explicit);
 ```
-‘Implicit’ Type Coercion is when data types are converted automatically. In the following example, the Number 123 will be coerced into a String that reads as “123”.
+‘Implicit’ Type Coercion is when data types are converted automatically, so it is called double edge sword; it’s a great source of frustration and defects, but also a useful mechanism that allows us to write less code without losing the readability. In the following example, the Number 123 will be coerced into a String that reads as “123”.
 
 ```
 const implicit = 123 + ''
 console.log(implicit);
 ```
 
+Thus, there is one operator that does not trigger implicit type coercion is `===`, which is called the strict equality operator.
+
 ## Question 9
 
-‘Data Types’ in JavaScript refer to the "type" of data being represented. There are several different types of data in JavaScript.
+The 'data type' of JavaScript refers to the "type" of data to be expressed. There are several different types of data in JavaScript.
 
 ‘Primitive’ data types include type ‘String’, ‘Number’, ‘Boolean’, ‘Null‘ and ‘Undefined’. These data types are referred to as ‘Primitive’ because their values can contain only a single type (i.e.: a ‘String’ OR a ‘Number’, but NOT both combined).
 
 The follow examples are 'primitive' types of data. Each individual data type can only be assigned to one variable:
 
 ```
-const string = 'foo';
-const number = 42;
-const boolean = true;
-let y = null;
-let x = undefined;
+let string = 'foo';
+let number = 42;
+let boolean = false;
+let x = null;
+let y = undefined;
 ```
 
 A more complex data type in JavaScript would be an ‘Object’. Objects are used to store collections of data and more complex entities. An example of a more complex entity might be an Object containing other data structures like an Array and even an Object containing other Objects.
@@ -136,25 +140,25 @@ const kyu = {
 
 ## Question 10
 
-An Array is a data structure in which data can be stored, accessed, manipulated/mutated and deleted. To accomplish this in JavaScript, the array needs to be iterated through while using the appropriate array method for the desired outcome.
+Arrays are data structures that can store, access, manipulate/variable, and delete data. To accomplish this in JavaScript, the array needs to be iterated through while using the appropriate array method for the desired outcome.
 
 ```
 let fruits = ['apple', 'banana', 'orange', 'pear', 'watermelon'];
 
-// Example 1 – Add data to the array (mutates the original array):
+// Example 1 – (mutates the original array) Add another fruit to the array :
 fruits.push('Kiwi');
 console.log(fruits);
 
-// Example 2 – Delete data from the array (mutates the original array):
+// Example 2 – (mutates the original array) Delete 'Kiwi' from the array:
 fruits.pop();
 console.log(fruits);
 
-// Example 3 – Access data in the array and log to console:
+// Example 3 – executes a provided function once for each array element:
 fruits.forEach(printArray = (fruit) => {
   console.log(fruit);
 });
 
-// Example 4 – Creates a new array from the original array (does not mutate the original array):
+// Example 4 – (does not mutate the original array) Creates a new array from the original array:
 const newFruitsArrary = fruits.map(fruit => {
   return fruit
 });
@@ -237,50 +241,6 @@ const newEmployee = JSON.parse(data);
 console.log(newEmployee);
 ```
 
-Question 13
-
-```
-class Car {  // this is a class that will produce 'Car' objects
-  constructor(brand) {  // the constructor will initialize the new object
-    this.carname = brand;  // this assigns brand to this.carname
-  }
-  present() {  // this is a function named 'present'
-    return 'I have a ' + this.carname;  // the function returns a string concatinated with the carname/brand
-  }
-}
-
-class Model extends Car {  // this class inherits from the Car class
-  constructor(brand, mod) {  // the constructor will initialize a model with a brand and model
-    super(brand);  // this calls the car class
-    this.model = mod;  // this assigns mod to this.model
-  }
-  show() {  // this function will return this.present from Car and concationate it with this.model
-    return this.present() + ', it was made in ' + this.model;
-  }
-}
-
-let makes = ["Ford", "Holden", "Toyota"]  // this is an array containing 3 items
-let models = Array.from(new Array(40), (x,i) => i + 1980)  // this creates an array of numbers representing dates from 1980
-
-function randomIntFromInterval(min,max) { // min and max included
-    return Math.floor(Math.random()*(max-min+1)+min);  // this function returns a random integer between min and max
-}
-
-for (model of models) {
-
-  make = makes[randomIntFromInterval(0,makes.length-1)]  // selects a random integer between 0 and makes.length-1 and uses that as an index to select a random make
-  model = models[randomIntFromInterval(0,makes.length-1)]  // selects a random integer between 0 and makes.length-1 and uses that as an index to select a random model
-    
-  mycar = new Model(make, model);  // create a new Model object stored in the variable 'mycar'
-  console.log(mycar.show())  // logs to the console 'I have a Ford, it was made in 1981' (assuming that Ford and 1981 was randomly chosen)
-}
-
-```
-
-
-
-
-
 ### Reference
 
 #### Q1
@@ -309,6 +269,8 @@ Developer.mozilla.org. 2021. Control flow - MDN Web Docs Glossary: Definitions o
 #### Q8
 
 Developer.mozilla.org. 2021. Type coercion - MDN Web Docs Glossary: Definitions of Web-related terms | MDN. [online] Available at: <https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion> [Accessed 1 September 2021].
+
+freeCodeCamp.org. 2021. JavaScript type coercion explained. [online] Available at: <https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/> [Accessed 13 September 2021].
 
 #### Q9
 
