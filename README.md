@@ -192,7 +192,7 @@ const year = myCar['year']
 console.log(`I bought a ${make} ${model} in ${year}`);
 ```
 
-To create more instances of an Object, a Constructor function is required. Using ES6 syntax, I would do this using the Class function to create more instances of the ‘Captains’ object:
+To create more instances of an Object, a Constructor function is required. Using ES6 syntax, I would do this using the Class function to create more instances of the ‘Cars’ object:
 
 ```
 class Cars {
@@ -239,6 +239,45 @@ In this example, the JSON String (stored in the variable 'data') is now being pa
 ```
 const newEmployee = JSON.parse(data);
 console.log(newEmployee);
+```
+
+## Question 13
+
+```
+class Car { // this is a 'Car' class that produce object
+  constructor(brand) { // constructor that initiallize the object
+    this.carname = brand; // make variable(assigne) brand to this.carname 
+  }
+  present() {
+    return 'I have a ' + this.carname; // returns 'I have a '(string) concatinated with the this.carname when function is called 
+  }
+}
+
+class Model extends Car { // this class inherits from the Car class
+  constructor(brand, mod) { // constructor that initiallize the brand and mod
+    super(brand); // call  'Car' class
+    this.model = mod; // make variable(assigne) mod to this.model
+  }
+  show() { // returns this.present concatinated with string and this.model
+    return this.present() + ', it was made in ' + this.model;
+  }
+}
+
+let makes = ["Ford", "Holden", "Toyota"] // make variable in array containing 3 strings
+let models = Array.from(new Array(40), (x,i) => i + 1980) // make variable in array containing numbers representing dates since 1980
+
+function randomIntFromInterval(min,max) { // function with two parameters
+    return Math.floor(Math.random()*(max-min+1)+min);
+} // return ramdom numbers between min and max
+
+for (model of models) { //
+
+  make = makes[randomIntFromInterval(0,makes.length-1)] // make variable for taking out of random number from index of 0 to length -1 
+  model = models[randomIntFromInterval(0,makes.length-1)] // make variable for taking out of random number from index of 0 to length -1
+
+  mycar = new Model(make, model); // make variable that stored new Model object
+  console.log(mycar.show()) // print out the consle randomely choes one with string
+}
 ```
 
 ### Reference
