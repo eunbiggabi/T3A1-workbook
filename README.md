@@ -32,6 +32,15 @@ Any software application needs to be secure against cyber-attacks and service di
 
 A MERN stack application is comprised of four main technologies – Mongo, Express, React and Node.
 
+features:
+
+- All four configurations can be used free of charge as an open source.
+- All four configurations are based on JavaScript.
+
+JavaScript was a language created for front-end development, so back-end used languages such as Java and C#, but later back-end development programs based on JavaScript such as MongoDB and Node.js came out, allowing both front-end and back-end to work in one language.
+
+From the developer's point of view, it's good to learn all of the back-end and front-end development just by learning one language (of course, just knowing the language doesn't make it easier, but it's easier for companies to use manpower more efficiently). Recently, even smartphone applications can be developed with JavaScript/HTML (to be precise, websites created with React can be converted into apps), so the use of JavaScript continues to increase.
+
 MongoDB Mongo is a document-orientated “NoSQL” database program. It is used to store information in documents (in JSON format) – as opposed to a traditional SQL database which uses relational tables.
 
 Node & Express Node is a JavaScript environment with libraries that make it easier to write software. Express extends Node specifically to make it easier to create webservers. Therefore, Express is a server-side framework which is used for building web/mobile applications and API’s.
@@ -75,17 +84,17 @@ Another improvement I have made is the addition of using more JavaScript in the 
 
 ## Question 7
 
-'Control flow' is the order in which the computer executes statements in a script. A script in JavaScript may include several/many control structures such as conditionals, loops and functions.
+In most programming languages, including Javascript, the code can be concisely expressed by changing the flow of codes that run sequentially, called "control flow." The control flow, if simply understood, is a conditional sentence and a repetition sentence, and is an important part of programming. it is the order in which the computer executes statements in a script. A script in JavaScript may include several/many control structures such as conditionals, loops and functions.
 
 The below If/Else Statement can change the flow of an application based on if a condition that is passed into the statement is determined to be true or false:
 
 ```
-function isEven (num) {
-    if (num % 2 === 0) {
-        return true;
-    } else {
-        return false;
-    }   
+if (age > 20) {
+  goAdultPage()
+} else if (age > 14) {
+  goTeenPage()
+} else {
+  goKidPage()
 }
 ```
 
@@ -93,20 +102,37 @@ function isEven (num) {
 
 Type coercion is the process of converting value from one type to another (such as string to number, object to boolean, and so on). There are two different types of ‘Type Coercion’ – Explicit and Implicit.
 
-‘Explicit’ Type Coercion is when type coercion is done on purpose by writing the appropriate code. The following example will coerce the number 123 into a string (using the JavaScript built-in String function):
+Explicit type conversion is literally stated! Number(), parseInt(), parseFloat(), String(), Boolean(), and so one. ‘Explicit’ Type Coercion is when type coercion is done on purpose by writing the appropriate code. The following example will coerce the number 123 into a string (using the JavaScript built-in String function):
 
 ```
 const explicit = String(123)
 console.log(explicit);
+
+Number(null) // 0
+Number(undefined) // NaN
+Number("-12.34") // -12.34
+String(-12.3) // "-12.3"
+String(false) // "false"
+Boolean(0) // false
+Boolean([]) // true
 ```
-‘Implicit’ Type Coercion is when data types are converted automatically, so it is called double edge sword; it’s a great source of frustration and defects, but also a useful mechanism that allows us to write less code without losing the readability. In the following example, the Number 123 will be coerced into a String that reads as “123”.
+‘Implicit’ Type Coercion is also a strength of JavaScript, but it is also the most avoided function. JavaScript is a loose language, so var automatically changes any type, so it is called double edge sword; it’s a great source of frustration and defects, but also a useful mechanism that allows us to write less code without losing the readability. In the following example, the Number 123 will be coerced into a String that reads as “123”.
 
 ```
 const implicit = 123 + ''
 console.log(implicit);
+
+1 + 'kyu' // 1kyu : string
+1 + '2' + 3 // '123' : string
+1 + 2 + '3' // '33' :string
+2 * "2" // 4 : number
+1 + true // 2 : number
+1 + false // 1 : number
 ```
 
 Thus, there is one operator that does not trigger implicit type coercion is `===`, which is called the strict equality operator.
+
+In fact, once you appreciate it with your eyes, you can see the rough rules. This is because you shouldn't write it like this in the end, and you won't have to write such a bizarre code if you write the code. However, when working with many developers, these bizarre codes come out, and developers who collaborate have to spend a lot of time figuring out the codes, so they use tighter typescripts in the first place.
 
 ## Question 9
 
